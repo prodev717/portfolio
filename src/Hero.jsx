@@ -155,7 +155,7 @@ export default function Hero({
             className="mt-6 flex justify-center"
           >
             <motion.a
-              href="/resume.pdf"
+              href="/Ganesh_M.pdf"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
