@@ -6,7 +6,7 @@ export default function AboutMe({
   leetcodeUsername = "prodev717",
   theme = "tokyonight",
 }) {
-  const statCardBase = `https://github-readme-stats.vercel.app/api`;
+  const statCardBase = `https://awesome-github-stats.azurewebsites.net`;
   const leetCodeBase = `https://leetcard.jacoblin.cool`;
 
   return (
@@ -15,10 +15,10 @@ export default function AboutMe({
       className="relative w-full min-h-screen overflow-hidden text-white"
       style={{ backgroundColor: "rgb(30, 40, 60)" }}
     >
-      
+
       <div className="relative z-10 flex min-h-screen items-center justify-center px-6 py-20">
         <div className="max-w-6xl w-full">
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -34,7 +34,7 @@ export default function AboutMe({
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
-            
+
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -42,7 +42,7 @@ export default function AboutMe({
               transition={{ duration: 0.8 }}
               className="space-y-8"
             >
-              
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -71,7 +71,7 @@ export default function AboutMe({
                 </p>
               </motion.div>
 
-              
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -101,7 +101,7 @@ export default function AboutMe({
                 </p>
               </motion.div>
 
-             
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -154,7 +154,7 @@ export default function AboutMe({
               </motion.div>
             </motion.div>
 
-           
+
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -162,14 +162,14 @@ export default function AboutMe({
               transition={{ duration: 0.8, delay: 0.2 }}
               className="space-y-8"
             >
-             
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="backdrop-blur-sm bg-white/5 rounded-3xl p-6 border border-white/10 shadow-2xl hover:bg-white/10 transition-all duration-300"
-                onClick={()=>{window.open("https://github.com/prodev717","_blank");}}
+                onClick={() => { window.open("https://github.com/prodev717", "_blank"); }}
               >
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-3 bg-purple-400/20 rounded-xl">
@@ -184,19 +184,19 @@ export default function AboutMe({
                     loading="lazy"
                     className="w-full"
                     alt={`GitHub stats card for ${githubUsername}`}
-                    src={`${statCardBase}?username=${githubUsername}&show_icons=true&include_all_commits=true&count_private=true&rank_icon=percentile&hide_border=true&theme=${theme}`}
+                    src={`${statCardBase}/user-stats/${githubUsername}?cardType=github&theme=dark&fontFamily=Mandali&preferLogin=false&Border=000000`}
                   />
                 </div>
               </motion.div>
 
-            
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="backdrop-blur-sm bg-white/5 rounded-3xl p-6 border border-white/10 shadow-2xl hover:bg-white/10 transition-all duration-300"
-                onClick={()=>{window.open("https://leetcode.com/u/prodev717","_blank");}}
+                onClick={() => { window.open("https://leetcode.com/u/prodev717", "_blank"); }}
               >
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-3 bg-orange-400/20 rounded-xl">

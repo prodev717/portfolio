@@ -27,16 +27,6 @@ const certifications = [
     ],
     skills: "Ideation · Prototyping · Business Modeling · Financial Planning",
   },
-  {
-    title: "HackerRank Certifications",
-    links: [
-      "https://www.hackerrank.com/certificates/1d448582eb07",
-      "https://www.hackerrank.com/certificates/71b294de4b98",
-      "https://www.hackerrank.com/certificates/0e7b82a1b342",
-      "https://www.hackerrank.com/certificates/8f369c854ab1",
-    ],
-    skills: "Java, Python, React (Basic), REST API (Intermediate)",
-  },
 ];
 
 export default function Experience() {
@@ -45,7 +35,7 @@ export default function Experience() {
       id="experience"
       className="relative w-full py-20 px-6 bg-[rgb(30,40,60)] text-white"
     >
-      
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -84,7 +74,7 @@ export default function Experience() {
         ))}
       </div>
 
-      
+
       <div className="max-w-5xl mx-auto flex flex-col gap-8">
         {certifications.map((cert, idx) => (
           <motion.div
@@ -95,23 +85,32 @@ export default function Experience() {
             transition={{ duration: 0.8, delay: idx * 0.1 }}
             className="bg-white/10 border border-white/10 rounded-2xl shadow-xl p-6 hover:scale-105 transition-transform duration-300"
           >
-            <h3 className="text-xl font-semibold text-teal-200 mb-2">
-              {cert.title}
+            <h3 className="text-xl font-semibold mb-2">
+              <a
+                href={cert.links[0]}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-teal-200 hover:text-teal-100 transition-colors underline decoration-teal-200/30 hover:decoration-teal-100"
+              >
+                {cert.title}
+              </a>
             </h3>
             <p className="text-gray-200 mb-4">{cert.skills}</p>
-            <div className="flex flex-col gap-2">
-              {cert.links.map((link, i) => (
-                <a
-                  key={i}
-                  href={link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sky-300 font-medium text-sm hover:text-sky-100 transition-colors"
-                >
-                  View Certificate {cert.links.length > 1 ? i + 1 : ""}
-                </a>
-              ))}
-            </div>
+            {cert.links.length > 1 && (
+              <div className="flex flex-col gap-2">
+                {cert.links.slice(1).map((link, i) => (
+                  <a
+                    key={i}
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sky-300 font-medium text-sm hover:text-sky-100 transition-colors"
+                  >
+                    Certificate {i + 2}
+                  </a>
+                ))}
+              </div>
+            )}
           </motion.div>
         ))}
       </div>

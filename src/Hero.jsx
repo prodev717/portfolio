@@ -17,9 +17,49 @@ export default function Hero({
     const sketch = (s) => {
       let triangles = [];
       let pts = [];
+      let particles = [];
       let w = 0;
       let h = 0;
-      const density = 120; 
+      const density = 120;
+      const mouseInfluence = 150;
+      const particleCount = 50;
+
+      class Particle {
+        constructor() {
+          this.x = s.random(w);
+          this.y = s.random(h);
+          this.vx = s.random(-0.5, 0.5);
+          this.vy = s.random(-0.5, 0.5);
+          this.size = s.random(2, 5);
+          this.alpha = s.random(100, 200);
+        }
+
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+
+          // Mouse interaction
+          const dx = s.mouseX - this.x;
+          const dy = s.mouseY - this.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < mouseInfluence) {
+            const force = (mouseInfluence - dist) / mouseInfluence;
+            this.x -= dx * force * 0.05;
+            this.y -= dy * force * 0.05;
+          }
+
+          // Wrap around edges
+          if (this.x < 0) this.x = w;
+          if (this.x > w) this.x = 0;
+          if (this.y < 0) this.y = h;
+          if (this.y > h) this.y = 0;
+        }
+
+        display() {
+          s.fill(200, 220, 255, this.alpha);
+          s.circle(this.x, this.y, this.size);
+        }
+      }
 
       const makePoints = () => {
         pts = [];
@@ -46,6 +86,12 @@ export default function Hero({
             triangles.push([b, d, c]);
           }
         }
+
+        // Initialize particles
+        particles = [];
+        for (let i = 0; i < particleCount; i++) {
+          particles.push(new Particle());
+        }
       };
 
       s.setup = () => {
@@ -65,34 +111,79 @@ export default function Hero({
       };
 
       s.draw = () => {
-
         s.background(30, 40, 60);
 
         const t = s.millis() * 0.001;
 
-       
-        for (let i = 0; i < pts.length; i++) {
-          const p = pts[i];
-          p._x = p.x + Math.sin(t * 0.8 + p.phase) * 25; 
-          p._y = p.y + Math.cos(t * 0.6 + p.phase) * 25; 
+        // Update and draw particles
+        for (let particle of particles) {
+          particle.update();
+          particle.display();
         }
 
-        
+        // Animate points with mouse interaction
+        for (let i = 0; i < pts.length; i++) {
+          const p = pts[i];
+          let offsetX = Math.sin(t * 0.8 + p.phase) * 25;
+          let offsetY = Math.cos(t * 0.6 + p.phase) * 25;
+
+          // Mouse repulsion effect
+          const dx = s.mouseX - p.x;
+          const dy = s.mouseY - p.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < mouseInfluence) {
+            const force = (mouseInfluence - dist) / mouseInfluence;
+            offsetX -= dx * force * 0.5;
+            offsetY -= dy * force * 0.5;
+          }
+
+          p._x = p.x + offsetX;
+          p._y = p.y + offsetY;
+        }
+
+        // Draw triangles with enhanced colors
         for (let i = 0; i < triangles.length; i++) {
           const [ia, ib, ic] = triangles[i];
           const a = pts[ia];
           const b = pts[ib];
           const c = pts[ic];
 
-         
           const cx = (a._x + b._x + c._x) / 3;
           const cy = (a._y + b._y + c._y) / 3;
-          const dist = Math.hypot(cx - w / 2, cy - h / 2);
-          const alpha = s.map(dist, 0, Math.max(w, h) / 2, 80, 20);
 
-          s.fill(200, 220, 255, alpha);
+          // Distance from center
+          const centerDist = Math.hypot(cx - w / 2, cy - h / 2);
+          const centerAlpha = s.map(centerDist, 0, Math.max(w, h) / 2, 80, 20);
+
+          // Distance from mouse
+          const mouseDist = Math.hypot(cx - s.mouseX, cy - s.mouseY);
+          const mouseEffect = s.constrain(s.map(mouseDist, 0, 300, 1.5, 0), 0, 1.5);
+
+          s.fill(200, 220, 255, centerAlpha * (1 + mouseEffect));
+
           s.triangle(a._x, a._y, b._x, b._y, c._x, c._y);
         }
+
+        // Draw connecting lines near mouse
+        s.stroke(100, 200, 255, 50);
+        s.strokeWeight(1);
+        for (let i = 0; i < pts.length; i++) {
+          const p1 = pts[i];
+          const dist1 = Math.hypot(p1._x - s.mouseX, p1._y - s.mouseY);
+          if (dist1 < 100) {
+            for (let j = i + 1; j < pts.length; j++) {
+              const p2 = pts[j];
+              const dist2 = Math.hypot(p2._x - s.mouseX, p2._y - s.mouseY);
+              const distBetween = Math.hypot(p1._x - p2._x, p1._y - p2._y);
+              if (dist2 < 100 && distBetween < density * 1.5) {
+                const alpha = s.map(distBetween, 0, density * 1.5, 80, 0);
+                s.stroke(100, 200, 255, alpha);
+                s.line(p1._x, p1._y, p2._x, p2._y);
+              }
+            }
+          }
+        }
+        s.noStroke();
       };
     };
 
@@ -113,7 +204,7 @@ export default function Hero({
     >
       <div
         ref={sketchParentRef}
-        className="pointer-events-none absolute inset-0 z-0"
+        className="absolute inset-0 z-0"
         aria-hidden
       />
 
