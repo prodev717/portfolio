@@ -27,6 +27,11 @@ const certifications = [
     ],
     skills: "Ideation · Prototyping · Business Modeling · Financial Planning",
   },
+  {
+    title: "HackerRank Certifications",
+    links: [],
+    skills: "Java, Python, React (Basic), REST API (Intermediate)",
+  }
 ];
 
 export default function Experience() {

@@ -17,49 +17,10 @@ export default function Hero({
     const sketch = (s) => {
       let triangles = [];
       let pts = [];
-      let particles = [];
       let w = 0;
       let h = 0;
       const density = 120;
       const mouseInfluence = 150;
-      const particleCount = 50;
-
-      class Particle {
-        constructor() {
-          this.x = s.random(w);
-          this.y = s.random(h);
-          this.vx = s.random(-0.5, 0.5);
-          this.vy = s.random(-0.5, 0.5);
-          this.size = s.random(2, 5);
-          this.alpha = s.random(100, 200);
-        }
-
-        update() {
-          this.x += this.vx;
-          this.y += this.vy;
-
-          // Mouse interaction
-          const dx = s.mouseX - this.x;
-          const dy = s.mouseY - this.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < mouseInfluence) {
-            const force = (mouseInfluence - dist) / mouseInfluence;
-            this.x -= dx * force * 0.05;
-            this.y -= dy * force * 0.05;
-          }
-
-          // Wrap around edges
-          if (this.x < 0) this.x = w;
-          if (this.x > w) this.x = 0;
-          if (this.y < 0) this.y = h;
-          if (this.y > h) this.y = 0;
-        }
-
-        display() {
-          s.fill(200, 220, 255, this.alpha);
-          s.circle(this.x, this.y, this.size);
-        }
-      }
 
       const makePoints = () => {
         pts = [];
@@ -86,12 +47,6 @@ export default function Hero({
             triangles.push([b, d, c]);
           }
         }
-
-        // Initialize particles
-        particles = [];
-        for (let i = 0; i < particleCount; i++) {
-          particles.push(new Particle());
-        }
       };
 
       s.setup = () => {
@@ -114,12 +69,6 @@ export default function Hero({
         s.background(30, 40, 60);
 
         const t = s.millis() * 0.001;
-
-        // Update and draw particles
-        for (let particle of particles) {
-          particle.update();
-          particle.display();
-        }
 
         // Animate points with mouse interaction
         for (let i = 0; i < pts.length; i++) {
