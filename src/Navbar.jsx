@@ -18,8 +18,8 @@ const Navbar = () => {
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] max-w-6xl z-50 bg-brand-bg text-brand-dark border-3 border-brand-dark neo-shadow px-4 py-3 flex items-center justify-between">
       {/* Brand Logo - Tilted Badge */}
       <a href="#home" className="inline-block">
-        <div className="bg-brand-dark text-brand-bg px-4 py-1.5 font-display font-extrabold text-xl md:text-2xl uppercase tracking-wider rotate-[-1.5deg] border-2 border-brand-dark hover:rotate-[1.5deg] transition-transform duration-150">
-          Ganesh M.
+        <div className="bg-brand-dark text-brand-bg px-2 py-1 font-display font-extrabold text-lg md:text-xl uppercase tracking-wide whitespace-nowrap rotate-[-1.5deg] border-2 border-brand-dark hover:rotate-[1.5deg] transition-transform duration-150">
+          Ganesh M
         </div>
       </a>
 

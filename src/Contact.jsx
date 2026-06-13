@@ -7,14 +7,14 @@ const contacts = [
     icon: <Linkedin size={32} strokeWidth={2.5} />,
     link: "https://linkedin.com/in/ganesh717",
     bg: "bg-[#E0A0A1]",
-    hoverText: "Let's Network! 💼"
+    hoverText: "Let's Network!"
   },
   {
     name: "GitHub",
     icon: <Github size={32} strokeWidth={2.5} />,
     link: "https://github.com/prodev717",
     bg: "bg-brand-bg",
-    hoverText: "View My Code! 💻"
+    hoverText: "View My Code!"
   },
   {
     name: "Email",
@@ -22,14 +22,14 @@ const contacts = [
     link: "mailto:717m.ganesh@gmail.com",
     bg: "bg-brand-red",
     textCol: "text-brand-bg",
-    hoverText: "Send an Email! ✉️"
+    hoverText: "Send an Email!"
   },
   {
     name: "Instagram",
     icon: <Instagram size={32} strokeWidth={2.5} />,
-    link: "https://instagram.com/musicon717",
+    link: "https://www.instagram.com/ganesh_m.exe",
     bg: "bg-brand-muddy",
-    hoverText: "Follow Me! 📸"
+    hoverText: "Follow Me!"
   },
 ];
 
@@ -40,7 +40,7 @@ export default function Contact() {
       className="relative w-full py-24 px-6 bg-brand-bg text-brand-dark border-t-3 border-brand-dark bg-grid-pattern"
     >
       <div className="max-w-4xl mx-auto z-10 relative">
-        
+
         {/* Section Heading Card */}
         <div className="flex justify-center mb-16">
           <motion.div
@@ -57,7 +57,7 @@ export default function Contact() {
         </div>
 
         {/* Contact Deck */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 justify-items-center">
           {contacts.map((contact, idx) => {
             const isDarkBg = contact.textCol === "text-brand-bg";
             return (
@@ -70,7 +70,7 @@ export default function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className={`flex flex-col items-center justify-between border-3 border-brand-dark p-6 neo-shadow hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[8px_8px_0px_0px_rgba(24,33,37,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 group h-[220px] ${contact.bg} ${contact.textCol || "text-brand-dark"}`}
+                className={`flex flex-col items-center justify-between border-3 border-brand-dark p-6 neo-shadow hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[8px_8px_0px_0px_rgba(24,33,37,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 group h-[220px] w-[220px] ${contact.bg} ${contact.textCol || "text-brand-dark"}`}
               >
                 {/* Arrow indicator at top right */}
                 <div className="w-full flex justify-end">
@@ -86,7 +86,7 @@ export default function Contact() {
 
                 {/* Contact Name & Detail */}
                 <div className="text-center w-full mt-4">
-                  <span className="block font-display font-black text-xl uppercase tracking-wider">
+                  <span className="block font-display font-black text uppercase tracking-wider">
                     {contact.name}
                   </span>
                   <span className="block text-xxs font-bold uppercase tracking-widest mt-1 opacity-70 group-hover:opacity-100 transition-opacity">
@@ -101,7 +101,7 @@ export default function Contact() {
         {/* Dynamic bottom message box */}
         <div className="mt-16 bg-brand-rose border-3 border-brand-dark p-6 text-center neo-shadow max-w-2xl mx-auto rotate-[-1deg] hover:rotate-0 transition-transform duration-200">
           <p className="font-display font-extrabold text-lg md:text-xl text-brand-dark uppercase tracking-wide">
-            🤝 Open for internships, collaborative projects, or a tech chat!
+            Open for internships, collaborative projects, or a tech chat!
           </p>
         </div>
       </div>

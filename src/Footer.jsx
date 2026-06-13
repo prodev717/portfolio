@@ -7,23 +7,20 @@ export default function Footer() {
         <div className="animate-marquee whitespace-nowrap flex gap-8 font-display font-black text-lg md:text-xl uppercase tracking-widest text-[#FBFAF7]">
           {[...Array(6)].map((_, i) => (
             <span key={i} className="flex items-center gap-8">
-              <span>Ganesh M</span>
-              <span className="text-brand-red">✦</span>
-              <span>Full-Stack Developer</span>
-              <span className="text-brand-rose">✦</span>
-              <span>Creative Coder</span>
-              <span className="text-brand-muddy">✦</span>
+              <span> Ganesh M </span>
+              <span className="text-brand-red"> ✦ </span>
+              <span> Full-Stack Developer </span>
+              <span className="text-brand-rose"> ✦ </span>
+              <span> Tech Enthusiast </span>
+              <span className="text-brand-muddy"> ✦ </span>
             </span>
           ))}
         </div>
       </div>
-      
+
       {/* Copyright Info */}
       <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xxs md:text-xs font-bold uppercase tracking-widest text-brand-bg/70">
         <p>&copy; {year} Ganesh M. All rights reserved.</p>
-        <p className="flex items-center gap-1">
-          Designed in Neo-Brutalist Theme
-        </p>
       </div>
     </footer>
   );

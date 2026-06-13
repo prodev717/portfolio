@@ -47,7 +47,7 @@ export default function AboutMe({
       className="relative w-full min-h-screen py-24 px-6 bg-brand-bg text-brand-dark border-t-3 border-brand-dark bg-grid-pattern flex items-center justify-center"
     >
       <div className="max-w-6xl w-full z-10">
-        
+
         {/* Section Heading Card */}
         <div className="flex justify-center mb-16">
           <motion.div
@@ -65,10 +65,10 @@ export default function AboutMe({
 
         {/* Layout Grid */}
         <div className="grid lg:grid-cols-2 gap-10 items-start">
-          
+
           {/* Left Column: Bio & Info */}
           <div className="space-y-8">
-            
+
             {/* Bio Card */}
             <NeoWindow title="Developer Bio" icon={User} headerBg="bg-brand-muddy" textCol="text-brand-bg">
               <p className="text-base md:text-lg leading-relaxed font-bold text-brand-dark">
@@ -79,7 +79,7 @@ export default function AboutMe({
                 — a <span className="underline decoration-brand-red decoration-3">Full-Stack Developer</span> and Computer Science undergrad at{" "}
                 <span className="underline decoration-brand-muddy decoration-3 font-extrabold text-brand-dark">
                   VIT-AP University
-                </span>. 
+                </span>.
               </p>
               <p className="mt-4 text-base md:text-lg leading-relaxed text-brand-dark/80">
                 I love crafting scalable web & mobile applications, exploring machine learning models, and building hardware interfaces (Arduino/Raspberry Pi) that connect computer vision to physical systems.
@@ -96,9 +96,9 @@ export default function AboutMe({
                   VIT-AP University
                 </span>
                 <div className="mt-3 p-3 bg-brand-bg border-2 border-brand-dark neo-shadow-sm flex flex-col gap-1 text-sm md:text-base">
-                  <span>🎓 CGPA: 8.5 / 10</span>
-                  <span>🗓️ Expected Graduation: May 2027</span>
-                  <span>📍 Amaravati, Andhra Pradesh, India</span>
+                  <span>CGPA: 8.5 / 10</span>
+                  <span>Expected Graduation: May 2027</span>
+                  <span>Amaravati, Andhra Pradesh, India</span>
                 </div>
               </div>
             </NeoWindow>
@@ -116,8 +116,8 @@ export default function AboutMe({
                   "Artificial Intelligence",
                   "Intro to Machine Learning"
                 ].map((course, i) => (
-                  <div 
-                    key={i} 
+                  <div
+                    key={i}
                     className="flex items-center gap-2 p-2 bg-[#FBFAF7] border-2 border-brand-dark text-xs md:text-sm font-bold shadow-[2px_2px_0px_0px_rgba(24,33,37,1)] hover:bg-brand-rose transition-colors duration-100"
                   >
                     <span className="w-2.5 h-2.5 bg-brand-red border border-brand-dark shrink-0"></span>
@@ -130,12 +130,12 @@ export default function AboutMe({
 
           {/* Right Column: Code/API Stats Platforms */}
           <div className="space-y-8">
-            
+
             {/* GitHub Stats Panel */}
-            <NeoWindow 
-              title="GitHub Profile Stats" 
-              icon={Github} 
-              headerBg="bg-brand-dark" 
+            <NeoWindow
+              title="GitHub Profile Stats"
+              icon={Github}
+              headerBg="bg-brand-dark"
               textCol="text-brand-bg"
               onClick={() => window.open(`https://github.com/${githubUsername}`, "_blank")}
             >
@@ -148,15 +148,15 @@ export default function AboutMe({
                 />
               </div>
               <div className="mt-3 text-right">
-                <span className="text-xs font-bold uppercase tracking-wider text-brand-red bg-brand-rose px-2.5 py-1 border border-brand-dark">
-                  ⚡ Click to visit github
+                <span className="text-xs font-bold uppercase tracking-wider text-black bg-brand-rose px-2.5 py-1 border border-brand-dark">
+                  Click to visit github
                 </span>
               </div>
             </NeoWindow>
 
             {/* LeetCode Stats Panel */}
-            <NeoWindow 
-              title="LeetCode Performance" 
+            <NeoWindow
+              title="LeetCode Performance"
               icon={() => (
                 <img
                   src="https://leetcode.com/static/images/LeetCode_logo_rvs.png"
@@ -177,8 +177,8 @@ export default function AboutMe({
                 />
               </div>
               <div className="mt-3 text-right">
-                <span className="text-xs font-bold uppercase tracking-wider text-brand-red bg-brand-rose px-2.5 py-1 border border-brand-dark">
-                  ⚡ Click to visit leetcode
+                <span className="text-xs font-bold uppercase tracking-wider text-black bg-brand-rose px-2.5 py-1 border border-brand-dark">
+                  Click to visit leetcode
                 </span>
               </div>
             </NeoWindow>

@@ -42,7 +42,7 @@ export default function Experience() {
       className="relative w-full py-24 px-6 bg-brand-bg text-brand-dark border-t-3 border-brand-dark bg-grid-pattern"
     >
       <div className="max-w-4xl mx-auto z-10 relative">
-        
+
         {/* Section Heading Card */}
         <div className="flex justify-center mb-16">
           <motion.div
@@ -60,7 +60,7 @@ export default function Experience() {
 
         {/* Experience Section */}
         <div className="space-y-8 mb-16">
-          
+
           {/* Subheading Tab */}
           <div className="flex items-center gap-3">
             <div className="bg-brand-dark text-brand-bg px-4 py-1.5 font-display font-black text-base md:text-lg uppercase tracking-wider border-2 border-brand-dark flex items-center gap-2">
@@ -86,22 +86,22 @@ export default function Experience() {
                     <h3 className="text-2xl font-display font-black uppercase tracking-wide text-brand-dark">
                       {exp.role}
                     </h3>
-                    
+
                     {/* Company Badge */}
                     <span className="inline-block mt-2 bg-brand-rose text-brand-dark border-2 border-brand-dark px-2.5 py-0.5 text-xs font-bold uppercase tracking-wider">
-                      🏢 {exp.company}
+                      {exp.company}
                     </span>
                   </div>
-                  
+
                   {/* Duration Badge */}
                   <div className="bg-brand-muddy text-brand-bg border-2 border-brand-dark px-3 py-1 text-xs md:text-sm font-bold uppercase tracking-wider shrink-0 self-start md:self-auto">
-                    📅 {exp.duration}
+                    {exp.duration}
                   </div>
                 </div>
 
                 {/* Location Badge */}
                 <div className="text-xs font-bold uppercase tracking-wider text-brand-dark/70 mb-4">
-                  📍 {exp.location}
+                  {exp.location}
                 </div>
 
                 {/* Description Box */}
@@ -115,7 +115,7 @@ export default function Experience() {
 
         {/* Certifications Section */}
         <div className="space-y-8">
-          
+
           {/* Subheading Tab */}
           <div className="flex items-center gap-3">
             <div className="bg-brand-dark text-brand-bg px-4 py-1.5 font-display font-black text-base md:text-lg uppercase tracking-wider border-2 border-brand-dark flex items-center gap-2">
@@ -140,7 +140,7 @@ export default function Experience() {
                   <h3 className="text-xl font-display font-black uppercase tracking-wide text-brand-dark leading-tight mb-3">
                     {cert.title}
                   </h3>
-                  
+
                   {/* Skills tags list */}
                   <div className="mt-3 p-3 bg-brand-bg border-2 border-brand-dark/30 text-xs font-semibold text-brand-dark/80 leading-relaxed rounded-none mb-6">
                     <span className="font-bold text-brand-dark uppercase block mb-1">Topics Covered:</span>
