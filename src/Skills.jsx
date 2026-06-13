@@ -83,9 +83,9 @@ export default function SkillsCarousel() {
             whileInView={{ opacity: 1, scale: 1, rotate: 1.5 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-block bg-brand-muddy text-brand-bg px-6 sm:px-8 py-3 border-3 border-brand-dark neo-shadow-lg"
+            className="inline-block bg-brand-muddy text-brand-bg px-4 py-2.5 sm:px-8 sm:py-3 border-3 border-brand-dark neo-shadow sm:neo-shadow-lg"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-black uppercase tracking-tight">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-display font-black uppercase tracking-tight">
               Technical Skills
             </h2>
           </motion.div>

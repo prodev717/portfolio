@@ -10,6 +10,7 @@
   
   --font-display: "Syne", sans-serif;
   --font-sans: "Space Grotesk", sans-serif;
+  --font-size-xxs: 0.65rem;
 }
 
 @layer base {

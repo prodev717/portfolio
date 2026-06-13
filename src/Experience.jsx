@@ -50,9 +50,9 @@ export default function Experience() {
             whileInView={{ opacity: 1, scale: 1, rotate: -1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-block bg-[#E0A0A1] text-brand-dark px-8 py-3 border-3 border-brand-dark neo-shadow-lg"
+            className="inline-block bg-[#E0A0A1] text-brand-dark px-4 py-2.5 sm:px-8 sm:py-3 border-3 border-brand-dark neo-shadow sm:neo-shadow-lg"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-black uppercase tracking-tight">
+            <h2 className="text-xl sm:text-4xl md:text-5xl font-display font-black uppercase tracking-tight">
               Experience & Credentials
             </h2>
           </motion.div>
@@ -63,8 +63,8 @@ export default function Experience() {
 
           {/* Subheading Tab */}
           <div className="flex items-center gap-3">
-            <div className="bg-brand-dark text-brand-bg px-4 py-1.5 font-display font-black text-base md:text-lg uppercase tracking-wider border-2 border-brand-dark flex items-center gap-2">
-              <Briefcase size={18} strokeWidth={2.5} />
+            <div className="bg-brand-dark text-brand-bg px-3 py-1 sm:px-4 sm:py-1.5 font-display font-black text-sm sm:text-base md:text-lg uppercase tracking-wider border-2 border-brand-dark flex items-center gap-2">
+              <Briefcase size={16} strokeWidth={2.5} />
               <span>Work Experience</span>
             </div>
             <div className="h-0.5 bg-brand-dark flex-grow border-t-2 border-brand-dark"></div>
@@ -118,14 +118,14 @@ export default function Experience() {
 
           {/* Subheading Tab */}
           <div className="flex items-center gap-3">
-            <div className="bg-brand-dark text-brand-bg px-4 py-1.5 font-display font-black text-base md:text-lg uppercase tracking-wider border-2 border-brand-dark flex items-center gap-2">
-              <Award size={18} strokeWidth={2.5} />
+            <div className="bg-brand-dark text-brand-bg px-3 py-1 sm:px-4 sm:py-1.5 font-display font-black text-sm sm:text-base md:text-lg uppercase tracking-wider border-2 border-brand-dark flex items-center gap-2">
+              <Award size={16} strokeWidth={2.5} />
               <span>Certifications & Badges</span>
             </div>
             <div className="h-0.5 bg-brand-dark flex-grow border-t-2 border-brand-dark"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {certifications.map((cert, idx) => (
               <motion.div
                 key={idx}
