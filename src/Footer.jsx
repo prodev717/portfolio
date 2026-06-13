@@ -19,7 +19,7 @@ export default function Footer() {
       </div>
 
       {/* Copyright Info */}
-      <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xxs md:text-xs font-bold uppercase tracking-widest text-brand-bg/70">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xxs md:text-xs font-bold uppercase tracking-widest text-brand-bg/70">
         <p>&copy; {year} Ganesh M. All rights reserved.</p>
       </div>
     </footer>

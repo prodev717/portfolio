@@ -525,7 +525,8 @@ export default function Hero({
   return (
     <section
       id="home"
-      className="relative min-h-screen w-full overflow-hidden bg-brand-bg text-brand-dark flex flex-col justify-center items-center px-6 pt-20"
+      className="relative min-h-screen w-full overflow-hidden bg-brand-bg text-brand-dark flex flex-col justify-center items-center px-4 sm:px-6 pt-20"
+      style={{ maxWidth: "100vw" }}
     >
       {/* Interactive Canvas Background */}
       <div
@@ -551,10 +552,10 @@ export default function Hero({
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.25 }}
-          className="text-4xl sm:text-5xl md:text-7xl font-display font-black leading-none uppercase tracking-tight text-brand-dark"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-black leading-none uppercase tracking-tight text-brand-dark"
         >
           I am{" "}
-          <span className="bg-brand-red text-brand-bg px-4 py-1 inline-block rotate-[1.5deg] border-4 border-brand-dark shadow-[6px_6px_0px_0px_rgba(24,33,37,1)] select-all">
+          <span className="bg-brand-red text-brand-bg px-2 sm:px-4 py-1 inline-block rotate-[1.5deg] border-4 border-brand-dark shadow-[4px_4px_0px_0px_rgba(24,33,37,1)] sm:shadow-[6px_6px_0px_0px_rgba(24,33,37,1)] select-all">
             {name}
           </span>
         </motion.h1>
@@ -574,20 +575,20 @@ export default function Hero({
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.55 }}
-          className="mt-10 flex flex-wrap gap-4 justify-center"
+          className="mt-10 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center items-center w-full"
         >
           <a
             href="/Ganesh_M.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-8 py-4 bg-brand-red text-brand-bg font-display font-extrabold text-lg border-3 border-brand-dark neo-shadow uppercase tracking-wider transition-all duration-150 hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[7px_7px_0px_0px_rgba(24,33,37,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+            className="inline-block px-5 sm:px-8 py-3 sm:py-4 bg-brand-red text-brand-bg font-display font-extrabold text-base sm:text-lg border-3 border-brand-dark neo-shadow uppercase tracking-wider transition-all duration-150 hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[7px_7px_0px_0px_rgba(24,33,37,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none w-full sm:w-auto text-center"
           >
             Get My Resume
           </a>
 
           <a
             href="#contact"
-            className="inline-block px-8 py-4 bg-brand-muddy text-brand-bg font-display font-extrabold text-lg border-3 border-brand-dark neo-shadow uppercase tracking-wider transition-all duration-150 hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[7px_7px_0px_0px_rgba(24,33,37,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+            className="inline-block px-5 sm:px-8 py-3 sm:py-4 bg-brand-muddy text-brand-bg font-display font-extrabold text-base sm:text-lg border-3 border-brand-dark neo-shadow uppercase tracking-wider transition-all duration-150 hover:translate-x-[-3px] hover:translate-y-[-3px] hover:shadow-[7px_7px_0px_0px_rgba(24,33,37,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none w-full sm:w-auto text-center"
           >
             Let's Talk!
           </a>

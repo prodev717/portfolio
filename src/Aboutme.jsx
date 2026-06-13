@@ -44,7 +44,7 @@ export default function AboutMe({
   return (
     <section
       id="about"
-      className="relative w-full min-h-screen py-24 px-6 bg-brand-bg text-brand-dark border-t-3 border-brand-dark bg-grid-pattern flex items-center justify-center"
+      className="relative w-full min-h-screen py-24 px-4 sm:px-6 bg-brand-bg text-brand-dark border-t-3 border-brand-dark bg-grid-pattern flex items-center justify-center"
     >
       <div className="max-w-6xl w-full z-10">
 
@@ -57,7 +57,7 @@ export default function AboutMe({
             transition={{ duration: 0.5 }}
             className="inline-block bg-brand-red text-brand-bg px-8 py-3 border-3 border-brand-dark neo-shadow-lg"
           >
-            <h2 className="text-4xl md:text-5xl font-display font-black uppercase tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-black uppercase tracking-tight">
               About Me
             </h2>
           </motion.div>

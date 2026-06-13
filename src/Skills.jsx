@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const skills = {
   Languages: [
@@ -23,7 +24,7 @@ const skills = {
     { name: "TailwindCSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
     { name: "HTMX", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/htmx/htmx-original.svg" },
   ],
-  DatabasesAndTools: [
+  "DB & Tools": [
     { name: "MongoDB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
     { name: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
     { name: "SQLite", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" },
@@ -39,112 +40,164 @@ const skills = {
     { name: "Computer Vision", logo: "https://cdn-icons-png.flaticon.com/512/4322/4322991.png" },
     { name: "Networking", logo: "https://cdn-icons-png.flaticon.com/512/1048/1048953.png" },
     { name: "Game Dev", logo: "https://cdn-icons-png.flaticon.com/512/1087/1087815.png" },
-  ]
+  ],
 };
 
-// Colors for skill cards in rotation
+const tabColors = {
+  Languages: { active: "bg-brand-rose text-brand-dark", indicator: "#E0A0A1" },
+  Frameworks: { active: "bg-brand-red text-brand-bg", indicator: "#EB4E63" },
+  "DB & Tools": { active: "bg-brand-dark text-brand-bg", indicator: "#182125" },
+};
+
 const cardColors = ["#FBFAF7", "#E0A0A1", "#908571"];
 
-function InfiniteRow({ items, reverse = false }) {
-  // Triple the items array to ensure a continuous overflow flow
-  const tripledItems = [...items, ...items, ...items];
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+};
 
-  return (
-    <div className="overflow-hidden w-full py-4 relative">
-      {/* Visual Fade Gradients at Edges */}
-      <div className="absolute left-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-r from-brand-bg to-transparent z-10 pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-l from-brand-bg to-transparent z-10 pointer-events-none" />
-
-      <motion.div
-        className="flex gap-6 w-max"
-        animate={{ x: reverse ? ["0%", "-33.333%"] : ["-33.333%", "0%"] }}
-        transition={{
-          repeat: Infinity,
-          duration: 35,
-          ease: "linear",
-        }}
-      >
-        {tripledItems.map((skill, i) => {
-          const cardBg = cardColors[i % cardColors.length];
-          return (
-            <div
-              key={i}
-              className="min-w-[140px] md:min-w-[160px] border-3 border-brand-dark rounded-none p-4 flex flex-col items-center justify-center neo-shadow hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[5px_5px_0px_0px_rgba(24,33,37,1)] transition-all duration-100 cursor-grab active:cursor-grabbing"
-              style={{ backgroundColor: cardBg }}
-            >
-              <div className="w-12 h-12 flex items-center justify-center p-1 bg-white border-2 border-brand-dark neo-shadow-sm rotate-[1.5deg] hover:rotate-0 transition-transform duration-100 mb-3">
-                <img 
-                  src={skill.logo} 
-                  alt={skill.name} 
-                  className="w-10 h-10 object-contain"
-                  onError={(e) => {
-                    // Fallback if image fails to load
-                    e.target.style.display = 'none';
-                  }}
-                />
-              </div>
-              <h3 className="text-sm font-display font-black text-brand-dark text-center select-none uppercase tracking-wide">
-                {skill.name}
-              </h3>
-            </div>
-          );
-        })}
-      </motion.div>
-    </div>
-  );
-}
+const cardVariants = {
+  hidden: { opacity: 0, y: 20, scale: 0.92 },
+  show: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 260, damping: 20 } },
+  exit: { opacity: 0, y: -10, scale: 0.95, transition: { duration: 0.15 } },
+};
 
 export default function SkillsCarousel() {
+  const [activeTab, setActiveTab] = useState("Languages");
+  const tabs = Object.keys(skills);
+
   return (
     <section
       id="skills"
       className="relative w-full min-h-screen py-24 overflow-hidden bg-brand-bg text-brand-dark border-t-3 border-brand-dark bg-grid-pattern flex flex-col justify-center"
     >
-      <div className="z-10 w-full">
-        {/* Section Title Card */}
-        <div className="flex justify-center mb-16">
+      <div className="z-10 w-full max-w-6xl mx-auto px-4 sm:px-6">
+        {/* Section Title */}
+        <div className="flex justify-center mb-12">
           <motion.div
             initial={{ opacity: 0, scale: 0.9, rotate: 1 }}
             whileInView={{ opacity: 1, scale: 1, rotate: 1.5 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-block bg-brand-muddy text-brand-bg px-8 py-3 border-3 border-brand-dark neo-shadow-lg"
+            className="inline-block bg-brand-muddy text-brand-bg px-6 sm:px-8 py-3 border-3 border-brand-dark neo-shadow-lg"
           >
-            <h2 className="text-4xl md:text-5xl font-display font-black uppercase tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-black uppercase tracking-tight">
               Technical Skills
             </h2>
           </motion.div>
         </div>
 
-        {/* Rows of Skills */}
-        <div className="flex flex-col gap-6 w-full">
-          <div>
-            <div className="max-w-6xl mx-auto px-6 mb-2">
-              <span className="font-display font-black text-sm uppercase tracking-widest bg-brand-rose text-brand-dark px-3 py-1 border-2 border-brand-dark inline-block rotate-[-0.5deg]">
-                Languages
-              </span>
-            </div>
-            <InfiniteRow items={skills.Languages} />
-          </div>
+        {/* Tab Bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="flex flex-wrap gap-2 sm:gap-3 justify-center mb-10"
+        >
+          {tabs.map((tab) => {
+            const isActive = activeTab === tab;
+            return (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`
+                  relative px-4 sm:px-6 py-2 sm:py-3 font-display font-black text-sm sm:text-base uppercase tracking-wider
+                  border-3 border-brand-dark transition-all duration-150 cursor-pointer
+                  ${isActive
+                    ? `${tabColors[tab].active} shadow-[4px_4px_0px_0px_rgba(24,33,37,1)] translate-x-[-2px] translate-y-[-2px]`
+                    : "bg-brand-bg text-brand-dark hover:bg-brand-rose hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0px_0px_rgba(24,33,37,1)]"
+                  }
+                `}
+              >
+                {tab}
+                {isActive && (
+                  <motion.span
+                    layoutId="tab-underline"
+                    className="absolute bottom-0 left-0 right-0 h-[3px] bg-brand-dark"
+                  />
+                )}
+              </button>
+            );
+          })}
+        </motion.div>
 
-          <div>
-            <div className="max-w-6xl mx-auto px-6 mb-2">
-              <span className="font-display font-black text-sm uppercase tracking-widest bg-brand-red text-brand-bg px-3 py-1 border-2 border-brand-dark inline-block rotate-[1deg]">
-                Frameworks & Libraries
-              </span>
-            </div>
-            <InfiniteRow items={skills.Frameworks} reverse />
-          </div>
+        {/* Tab count badge */}
+        <motion.div
+          key={activeTab + "-count"}
+          initial={{ opacity: 0, x: -8 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="flex items-center gap-3 mb-6 px-1"
+        >
+          <span
+            className="font-display font-black text-xs uppercase tracking-widest px-3 py-1 border-2 border-brand-dark inline-block"
+            style={{ backgroundColor: tabColors[activeTab].indicator, color: activeTab === "DB & Tools" ? "#FBFAF7" : "#182125" }}
+          >
+            {activeTab}
+          </span>
+          <span className="font-bold text-sm text-brand-dark/60">
+            {skills[activeTab].length} skills
+          </span>
+          <div className="flex-1 h-[2px] bg-brand-dark/20" />
+        </motion.div>
 
-          <div>
-            <div className="max-w-6xl mx-auto px-6 mb-2">
-              <span className="font-display font-black text-sm uppercase tracking-widest bg-brand-dark text-brand-bg px-3 py-1 border-2 border-brand-dark inline-block rotate-[-1deg]">
-                Databases, Tools & Concepts
-              </span>
-            </div>
-            <InfiniteRow items={skills.DatabasesAndTools} />
-          </div>
-        </div>
+        {/* Skills Grid */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            variants={containerVariants}
+            initial="hidden"
+            animate="show"
+            exit="exit"
+            className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 sm:gap-4"
+          >
+            {skills[activeTab].map((skill, i) => {
+              const cardBg = cardColors[i % cardColors.length];
+              return (
+                <motion.div
+                  key={skill.name}
+                  variants={cardVariants}
+                  whileHover={{
+                    translateX: -3,
+                    translateY: -3,
+                    boxShadow: "5px 5px 0px 0px rgba(24,33,37,1)",
+                  }}
+                  className="border-3 border-brand-dark p-2 sm:p-3 flex flex-col items-center justify-center neo-shadow cursor-pointer group overflow-hidden"
+                  style={{ backgroundColor: cardBg }}
+                >
+                  {/* Logo box */}
+                  <div className="w-9 h-9 sm:w-12 sm:h-12 flex items-center justify-center bg-white border-2 border-brand-dark neo-shadow-sm rotate-[1.5deg] group-hover:rotate-0 transition-transform duration-150 mb-2 shrink-0">
+                    <img
+                      src={skill.logo}
+                      alt={skill.name}
+                      className="w-6 h-6 sm:w-9 sm:h-9 object-contain"
+                      onError={(e) => {
+                        e.target.style.display = "none";
+                      }}
+                    />
+                  </div>
+                  {/* Name */}
+                  <span className="text-[9px] sm:text-[11px] font-display font-black text-brand-dark text-center uppercase tracking-normal sm:tracking-wide leading-tight w-full break-words line-clamp-2">
+                    {skill.name}
+                  </span>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Bottom decorative line */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-14 h-1 bg-brand-dark origin-left"
+        />
       </div>
     </section>
   );

@@ -69,7 +69,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative w-full py-24 px-6 bg-brand-bg text-brand-dark border-t-3 border-brand-dark bg-grid-pattern"
+      className="relative w-full py-24 px-4 sm:px-6 bg-brand-bg text-brand-dark border-t-3 border-brand-dark bg-grid-pattern"
     >
       <div className="max-w-6xl mx-auto z-10 relative">
         
@@ -82,7 +82,7 @@ export default function Projects() {
             transition={{ duration: 0.5 }}
             className="inline-block bg-brand-rose text-brand-dark px-8 py-3 border-3 border-brand-dark neo-shadow-lg"
           >
-            <h2 className="text-4xl md:text-5xl font-display font-black uppercase tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-black uppercase tracking-tight">
               Projects
             </h2>
           </motion.div>
